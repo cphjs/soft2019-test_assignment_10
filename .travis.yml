@@ -11,15 +11,16 @@ install: true
 
 script:
   - echo $TRAVIS_BUILD_DIR
-  - ls -l
-  - pwd
-  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn test
+  #- docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn test
   # unit 
-  #- docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountTest,cphb.CreditCardTest surefire:test
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountTest,cphb.CreditCardTest test
   # integration
-  #- docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountContrllerTest surefire:test
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountContrllerTest test
 
   # selenium
   - docker network create cphb-network
-  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app --network cphb-network --name assignment10-app cphb/assignment10-app 
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app --network cphb-network -d --name assignment10-app cphb/assignment10-app 
   - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app --network cphb-network --env "APP_URL=http://app.test:8080" --link "assignment10-app:app.test" --name assignment10-selenium cphb/assignment10-selenium
+  - docker container ls
+  - docker container inspect assignment10-app
+  - docker network inspect cphb-network
