@@ -7,7 +7,7 @@ RUN apt-get update \
     && apt-get install libdbus-glib-1-2 -y
 
 # debug
-RUN apt-get install netcat -y
+RUN apt-get install netcat dnsutils -y
 
 RUN wget "https://github.com/mozilla/geckodriver/releases/download/${GECKODRIVER_VERSION}/geckodriver-${GECKODRIVER_VERSION}-${GECKODRIVER_PLATFORM}.tar.gz" \
         -O geckodriver.tar.gz \
