@@ -11,10 +11,11 @@ install: true
 
 script:
   # unit 
-  - docker run --rm -v $(pwd):/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountTest,cphb.CreditCardTest surefire:test
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountTest,cphb.CreditCardTest surefire:test
   # integration
-  - docker run --rm -v $(pwd):/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountContrllerTest surefire:test
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountContrllerTest surefire:test
 
   # selenium
-  - docker run --rm -v $(pwd):/app -w /app -d --network host --name assignment10-app cphb/assignment10-app 
-  - docker run --rm -v $(pwd):/app -w /app --network host --env "APP_URL=http://app.test:8080" --link "assignment10-app:app.test" --name assignment10-selenium cphb/assignment10-selenium
+  - docker network create cphb-network
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app -d --network cphb-network --name assignment10-app cphb/assignment10-app 
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app --network cphb-network --env "APP_URL=http://app.test:8080" --link "assignment10-app:app.test" --name assignment10-selenium cphb/assignment10-selenium
