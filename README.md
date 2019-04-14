@@ -2,6 +2,7 @@
 ## Notes
 
 - Running the selenium tests more than without reloading the web app will fail. This is because the test "opens an account", and it cannot create multiple accounts with the same name.
+- [.travis.yml](.travis.yml) file contains the Travis pipeline definition
 
 
 ## Building the containers

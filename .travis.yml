@@ -10,6 +10,9 @@ before_install:
 install: true 
 
 script:
+  - echo $TRAVIS_BUILD_DIR
+  - ls -l
+  - pwd
   # unit 
   - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountTest,cphb.CreditCardTest surefire:test
   # integration
