@@ -20,3 +20,9 @@ script:
   - docker network create cphb-network
   - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app --network cphb-network -d --name assignment10-app cphb/assignment10-app 
   - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app --network cphb-network --name assignment10-selenium --env "APP_URL=http://app.test:8080" --link "assignment10-app:app.test" --name assignment10-selenium cphb/assignment10-selenium
+
+deploy:
+  provider: heroku
+  api_key: spFiCjkLTaO5Nr0Odb43vGk/EBRE1Nrx20KtAopo7OlBYrZp2i7ZxGGTuZh0+MEsiYgXUl3eYGJYm4Bps9Lvl7OMR8lXLV4eQnuJyzPTU/OC1b3063swR0lre3eUcMG7NNbQelpW5VuEBmGsf2nZv5FhvB9y87+1xgZmujfCHSeawyC6dBKWMFUO8IPfI3hsQ2f7wwe3P77D7cBAq6TqNhjkJM9LuHL7unnOWWmxgGrTBqx5Ul7WOo6SYF8eFvbW0/Pgil1qlucR9msjSEMToVlRB72S2QLimI4xxpbHm8aZWAr6t7/61rA0E6V1gPCA7drmggVbyRh9D1SABhA0M+V9UC1RCr2Is0u5pJe4NoPu7J9Jbd1IJRMPqIjKS6TWoAFpDmLIVLiEKZgVfI2ZdIR/LJMsvlZGVBNOzpB0cNv+DYGiheczwfhKx4pgDuXUt0x+OwLjWV2RsNwyCFmfUiT/MnrnAXFHfWClDNsLksQ+vNZzuTYTogSuBblHjwrGtUSLxYxGAKKLiiPVnqVRztJORgX+qy6bum0rKRxWIgR8HQ0hzPQAanyPcTiGyOYV3ZI1L3TrTfc+yplbwADxjtC3yzd2+sVgvqlOnUYu/csRGA19kmWd3AqklCgn76bQPBfo48vcyyi+kIz3dEQcKO4dZTlothQnbfTOeUALpRk=
+  app: cphb-assignment10
+  skip_cleanup: true
