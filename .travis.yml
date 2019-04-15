@@ -21,8 +21,8 @@ script:
 
   # selenium
   - docker network create cphb-network
-  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app --network cphb-network -d --name assignment10-app cphb/assignment10-app 
-  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app --network cphb-network --name assignment10-selenium --env "APP_URL=http://app.test:8080" --link "assignment10-app:app.test" --name assignment10-selenium cphb/assignment10-selenium
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app -v $HOME/.m2:/root/.m2 --network cphb-network -d --name assignment10-app cphb/assignment10-app 
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app -v $HOME/.m2:/root/.m2 --network cphb-network --name assignment10-selenium --env "APP_URL=http://app.test:8080" --link "assignment10-app:app.test" --name assignment10-selenium cphb/assignment10-selenium
 
 deploy:
   provider: heroku
