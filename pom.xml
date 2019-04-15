@@ -168,12 +168,11 @@
     <finalName>Assignment_10</finalName>
       <plugins>
         
-        <!--<plugin>
+        <plugin>
               <groupId>org.eclipse.jetty</groupId>
               <artifactId>jetty-maven-plugin</artifactId>
               <version>9.4.12.v20180830</version>
           </plugin>
-          -->
         <!--<plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
