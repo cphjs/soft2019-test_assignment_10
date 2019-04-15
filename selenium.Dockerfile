@@ -26,4 +26,5 @@ ENV SELENIUM_PROMISE_MANAGER=0
 ENV HEADLESS=1
 
 #CMD ["mvn", "-Dtest=cphb.OpenAccountTest", "-DAPP_URL=${APP_URL}",  "test"]
-CMD mvn -Dtest=cphb.OpenAccountTest -DAPP_URL=${APP_URL} test
+#CMD mvn -Dtest=cphb.OpenAccountTest -DAPP_URL=${APP_URL} test
+CMD sh scripts/selenium_startup.sh
