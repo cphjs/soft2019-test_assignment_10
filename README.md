@@ -1,6 +1,7 @@
 
 ## Notes
 
+- [Assignment 10 definition](https://github.com/datsoftlyngby/soft2019spring-test/blob/master/Assignments/10%20CI%20CD%20Assignment.pdf)
 - Running the selenium tests more than without reloading the web app will fail. This is because the test "opens an account", and it cannot create multiple accounts with the same name.
 - [.travis.yml](.travis.yml) file contains the Travis pipeline definition
 
@@ -14,7 +15,7 @@
 Image 1 - Travis build history
 ![travis build history](screenshots/travis_history.png)
 
-** See end of this file for example build output from a successful build.**
+**See end of this file for example build output from a successful build.**
 
 
 ## Building the containers
@@ -59,6 +60,10 @@ mvn -Dtest=cphb.AccountTest,cphb.CreditCardTest surefire:test
 mvn -Dtest=cphb.AccountContrllerTest surefire:test
 mvn -Dtest=cphb.OpenAccountTest surefire:test
 ```
+
+## The web app
+
+The project itself is a Java web application using Spring MVC. It is sort of a bank application where customers can open an account, login and withthdraw/deposit money, this includes multiple pages with forms. Nothing fancy but it provides stuff to test.. You can also view the application live at its [heroku site](https://cphb-assignment10.herokuapp.com/)
 
 ### Example build output
 
