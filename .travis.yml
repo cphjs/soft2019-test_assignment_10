@@ -15,9 +15,9 @@ install: true
 script:
   - echo $TRAVIS_BUILD_DIR
   # unit 
-  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountTest,cphb.CreditCardTest test
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -v $HOME/.m2:/root/.m2 -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountTest,cphb.CreditCardTest test
   # integration
-  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountContrllerTest test
+  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/app -v $HOME/.m2:/root/.m2 -w /app cphb/assignment10-app mvn -Dtest=cphb.AccountContrllerTest test
 
   # selenium
   - docker network create cphb-network

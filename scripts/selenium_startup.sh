@@ -10,7 +10,7 @@ until nc -q 1 -w 1 $ip $port; do
     echo "Waiting for app to start"
     sleep 1
     count=$((count+1))
-    if [ "$count" -eq 100 ]; then 
+    if [ "$count" -eq 50 ]; then 
         break;
     fi
 done
